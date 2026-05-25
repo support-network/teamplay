@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamPlay - Global Message</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
+    <div id="auth-screen" class="screen active">
+        <div class="auth-box">
+            <h2><i class="fa-solid fa-gamepad"></i> TeamPlay</h2>
+            <p>Глобальный чат для геймеров</p>
+            <div class="input-group">
+                <input type="text" id="username-input" placeholder="Введите ваш никнейм..." maxlength="15">
+            </div>
+            <button id="login-btn"><i class="fa-solid fa-right-to-bracket"></i> Войти в сеть</button>
+        </div>
+    </div>
+
+    <div id="app-screen" class="screen">
+        <aside class="sidebar">
+            <div class="logo">
+                <h3>TeamPlay</h3>
+                <span>Global Message</span>
+            </div>
+            <nav class="menu">
+                <button class="nav-btn active" data-target="news-section"><i class="fa-solid fa-newspaper"></i> Главная (Новости)</button>
+                <button class="nav-btn" data-target="chat-section"><i class="fa-solid fa-earth-americas"></i> Глобальный чат</button>
+                <button class="nav-btn" data-target="profile-section"><i class="fa-solid fa-user-gear"></i> Профиль</button>
+            </nav>
+            <div class="current-user-card">
+                <img id="nav-avatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=default" alt="Avatar">
+                <span id="nav-username">Nickname</span>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            
+            <section id="news-section" class="tab-content active">
+                <div class="section-header"><h2><i class="fa-solid fa-newspaper"></i> Новости платформы</h2></div>
+                <div id="news-container" class="news-list">
+                    <div class="loading">Загрузка новостей...</div>
+                </div>
+            </section>
+
+            <section id="chat-section" class="tab-content">
+                <div class="section-header"><h2><i class="fa-solid fa-earth-americas"></i> Глобальный чат</h2></div>
+                <div id="chat-messages" class="chat-messages-area">
+                    </div>
+                <form id="chat-form" class="chat-input-area">
+                    <input type="text" id="message-input" placeholder="Напишите сообщение..." autocomplete="off" required maxlength="500">
+                    <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </section>
+
+            <section id="profile-section" class="tab-content">
+                <div class="section-header"><h2><i class="fa-solid fa-user-gear"></i> Настройки профиля</h2></div>
+                <div class="profile-card">
+                    <div class="avatar-upload-zone">
+                        <img id="profile-avatar-preview" src="https://api.dicebear.com/7.x/bottts/svg?seed=default" alt="Avatar Preview">
+                        <label for="avatar-file-input" class="upload-label">
+                            <i class="fa-solid fa-camera"></i> Изменить аватар
+                        </label>
+                        <input type="file" id="avatar-file-input" accept="image/*" style="display: none;">
+                    </div>
+                    
+                    <div class="profile-inputs">
+                        <div class="input-group">
+                            <label>Ваш Никнейм</label>
+                            <input type="text" id="profile-username-input" placeholder="Новый ник..." maxlength="15">
+                        </div>
+                        <button id="save-profile-btn"><i class="fa-solid fa-floppy-disk"></i> Сохранить изменения</button>
+                        <button id="logout-btn" class="danger-btn"><i class="fa-solid fa-door-open"></i> Выйти из аккаунта</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
