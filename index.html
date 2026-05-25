@@ -50,9 +50,24 @@
                 <div class="section-header"><h2><i class="fa-solid fa-earth-americas"></i> Глобальный чат</h2></div>
                 <div id="chat-messages" class="chat-messages-area">
                     </div>
+                
+                <div id="typing-indicator" class="typing-indicator-box"></div>
+
+                <div id="edit-panel" class="edit-message-panel" style="display: none;">
+                    <div class="edit-info">
+                        <i class="fa-solid fa-pen"></i> Редактирование сообщения...
+                    </div>
+                    <button id="cancel-edit-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
                 <form id="chat-form" class="chat-input-area">
-                    <input type="text" id="message-input" placeholder="Напишите сообщение..." autocomplete="off" required maxlength="500">
-                    <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                    <label for="chat-file-input" class="attach-btn">
+                        <i class="fa-solid fa-paperclip"></i>
+                    </label>
+                    <input type="file" id="chat-file-input" style="display: none;">
+                    
+                    <input type="text" id="message-input" placeholder="Напишите сообщение..." autocomplete="off" maxlength="500">
+                    <button type="submit" id="send-msg-btn"><i class="fa-solid fa-paper-plane"></i></button>
                 </form>
             </section>
 
