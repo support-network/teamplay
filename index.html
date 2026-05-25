@@ -6,33 +6,47 @@
     <title>TeamPlay - Global Message</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <div class="cube-environment">
+        <div class="floating-sphere sphere-1"></div>
+        <div class="floating-sphere sphere-2"></div>
+        <div class="floating-sphere sphere-3"></div>
+    </div>
+
     <div id="auth-screen" class="screen active">
-        <div class="auth-box">
-            <h2><i class="fa-solid fa-gamepad"></i> TeamPlay</h2>
-            <p>Глобальный чат для геймеров</p>
-            <div class="input-group">
-                <input type="text" id="username-input" placeholder="Введите ваш никнейм..." maxlength="15">
+        <div class="auth-wrapper3d">
+            <div class="auth-box">
+                <div class="auth-logo3d">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <h2>TeamPlay</h2>
+                <p>Premium Global Messaging Ecosystem</p>
+                <div class="input-group">
+                    <input type="text" id="username-input" placeholder="Создайте уникальный ник..." maxlength="15">
+                </div>
+                <button id="login-btn">Войти в пространство <i class="fa-solid fa-arrow-right"></i></button>
             </div>
-            <button id="login-btn"><i class="fa-solid fa-right-to-bracket"></i> Войти в сеть</button>
         </div>
     </div>
 
-    <div id="app-screen" class="screen">
+    <div id="app-screen" class="screen main-layout3d">
         <aside class="sidebar">
             <div class="logo">
                 <h3>TeamPlay</h3>
-                <span>Global Message</span>
+                <div class="badge">v2.0 3D</div>
             </div>
             <nav class="menu">
-                <button class="nav-btn active" data-target="news-section"><i class="fa-solid fa-newspaper"></i> Главная (Новости)</button>
-                <button class="nav-btn" data-target="chat-section"><i class="fa-solid fa-earth-americas"></i> Глобальный чат</button>
-                <button class="nav-btn" data-target="profile-section"><i class="fa-solid fa-user-gear"></i> Профиль</button>
+                <button class="nav-btn active" data-target="news-section"><i class="fa-solid fa-compass"></i> Главная</button>
+                <button class="nav-btn" data-target="chat-section"><i class="fa-solid fa-bolt"></i> Глобальный эфир</button>
+                <button class="nav-btn" data-target="profile-section"><i class="fa-solid fa-sliders"></i> Конфигурация</button>
             </nav>
             <div class="current-user-card">
-                <img id="nav-avatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=default" alt="Avatar">
+                <div class="avatar-ring">
+                    <img id="nav-avatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=default" alt="Avatar">
+                </div>
                 <span id="nav-username">Nickname</span>
             </div>
         </aside>
@@ -40,14 +54,19 @@
         <main class="content-area">
             
             <section id="news-section" class="tab-content active">
-                <div class="section-header"><h2><i class="fa-solid fa-newspaper"></i> Новости платформы</h2></div>
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-satellite-dish"></i> Лента обновлений</h2>
+                </div>
                 <div id="news-container" class="news-list">
-                    <div class="loading">Загрузка новостей...</div>
+                    <div class="loading">Синхронизация потока данных...</div>
                 </div>
             </section>
 
             <section id="chat-section" class="tab-content">
-                <div class="section-header"><h2><i class="fa-solid fa-earth-americas"></i> Глобальный чат</h2></div>
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-globe"></i> Глобальный хаб</h2>
+                </div>
+                
                 <div id="chat-messages" class="chat-messages-area">
                     </div>
                 
@@ -55,40 +74,63 @@
 
                 <div id="edit-panel" class="edit-message-panel" style="display: none;">
                     <div class="edit-info">
-                        <i class="fa-solid fa-pen"></i> Редактирование сообщения...
+                        <i class="fa-solid fa-pen-to-square"></i> Корректировка сообщения
                     </div>
-                    <button id="cancel-edit-btn"><i class="fa-solid fa-xmark"></i></button>
+                    <button id="cancel-edit-btn"><i class="fa-solid fa-circle-xmark"></i></button>
                 </div>
 
-                <form id="chat-form" class="chat-input-area">
-                    <label for="chat-file-input" class="attach-btn">
-                        <i class="fa-solid fa-paperclip"></i>
-                    </label>
-                    <input type="file" id="chat-file-input" style="display: none;">
-                    
-                    <input type="text" id="message-input" placeholder="Напишите сообщение..." autocomplete="off" maxlength="500">
-                    <button type="submit" id="send-msg-btn"><i class="fa-solid fa-paper-plane"></i></button>
-                </form>
+                <div class="input-container-wrapper">
+                    <div id="emoji-picker" class="ios-emoji-picker" style="display: none;">
+                        <div class="emoji-tabs">
+                            <span class="emoji-tab-item active">😀</span>
+                            <span class="emoji-tab-item">🍕</span>
+                            <span class="emoji-tab-item">🚗</span>
+                            <span class="emoji-tab-item">💡</span>
+                            <span class="emoji-tab-item">❤️</span>
+                        </div>
+                        <div id="emoji-list-container" class="emoji-grid">
+                            </div>
+                    </div>
+
+                    <form id="chat-form" class="chat-input-area">
+                        <label for="chat-file-input" class="attach-btn" title="Прикрепить медиа">
+                            <i class="fa-solid fa-plus"></i>
+                        </label>
+                        <input type="file" id="chat-file-input" style="display: none;">
+                        
+                        <input type="text" id="message-input" placeholder="Напишите что-нибудь..." autocomplete="off" maxlength="500">
+                        
+                        <button type="button" id="emoji-toggle-btn" class="emoji-btn">
+                            <i class="fa-regular fa-face-smile"></i>
+                        </button>
+                        
+                        <button type="submit" id="send-msg-btn" class="send-btn">
+                            <i class="fa-solid fa-arrow-up"></i>
+                        </button>
+                    </form>
+                </div>
             </section>
 
             <section id="profile-section" class="tab-content">
-                <div class="section-header"><h2><i class="fa-solid fa-user-gear"></i> Настройки профиля</h2></div>
+                <div class="section-header"><h2><i class="fa-solid fa-id-card"></i> Персонализация</h2></div>
                 <div class="profile-card">
                     <div class="avatar-upload-zone">
-                        <img id="profile-avatar-preview" src="https://api.dicebear.com/7.x/bottts/svg?seed=default" alt="Avatar Preview">
+                        <div class="avatar-perspective-container">
+                            <img id="profile-avatar-preview" src="https://api.dicebear.com/7.x/bottts/svg?seed=default" alt="Avatar">
+                        </div>
                         <label for="avatar-file-input" class="upload-label">
-                            <i class="fa-solid fa-camera"></i> Изменить аватар
+                            <i class="fa-solid fa-cloud-arrow-up"></i> Обновить медиа-чип
                         </label>
                         <input type="file" id="avatar-file-input" accept="image/*" style="display: none;">
                     </div>
                     
                     <div class="profile-inputs">
                         <div class="input-group">
-                            <label>Ваш Никнейм</label>
+                            <label>Сетевой псевдоним</label>
                             <input type="text" id="profile-username-input" placeholder="Новый ник..." maxlength="15">
                         </div>
-                        <button id="save-profile-btn"><i class="fa-solid fa-floppy-disk"></i> Сохранить изменения</button>
-                        <button id="logout-btn" class="danger-btn"><i class="fa-solid fa-door-open"></i> Выйти из аккаунта</button>
+                        <button id="save-profile-btn" class="premium-btn"><i class="fa-solid fa-signature"></i> Зафиксировать изменения</button>
+                        <button id="logout-btn" class="danger-btn"><i class="fa-solid fa-power-off"></i> Прервать сессию</button>
                     </div>
                 </div>
             </section>
